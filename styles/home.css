@@ -1,1 +1,14 @@
-/* add home page styles here */
+.flex {
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    background-image: url(../assets/background.jpg);
+}
+
+h1 {
+    color: white;
+    font-size: 55px;
+}
+
