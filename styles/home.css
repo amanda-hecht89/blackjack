@@ -1,5 +1,5 @@
 body {
-    background-image: url(../assets/background.jpg);
+    background-image: url(../assets/background2.jpeg);
     text-align: center;
     background-repeat: repeat;
     background-size: cover;
@@ -13,12 +13,12 @@ button {
 }
 
 #dealerCards img {
-    height: 175px;
+    height: 220px;
     margin: 2px;
 }
 
 #yourCards img {
-    height: 175px;
+    height: 220px;
     margin: 2px;
 }
 
