@@ -3,6 +3,11 @@
     justify-content: center;
 }
 
+button {
+    width: 25%;
+    font-size: 20px;
+}
+
 body {
     background-image: url(../assets/background.jpg);
 }
@@ -10,5 +15,15 @@ body {
 h1 {
     color: white;
     font-size: 55px;
+}
+
+h2 {
+    color: white;
+    font-size: 30px;
+}
+
+#results {
+    color: white;
+    font-size: 30px;
 }
 
