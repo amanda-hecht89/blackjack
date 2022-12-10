@@ -1,8 +1,3 @@
-.flex {
-    display: flex;
-    justify-content: center;
-}
-
 button {
     width: 25%;
     font-size: 20px;
@@ -10,6 +5,7 @@ button {
 
 body {
     background-image: url(../assets/background.jpg);
+    text-align: center;
 }
 
 h1 {
