@@ -5,12 +5,18 @@ let yourAceCount = 0;
 let hidden;
 let deck;
 let canHit = true;
+const start = document.querySelector('.start');
 
 window.onload = function() {
     buildDeck();
     shuffleDeck();
     startGame();
 };
+
+start.addEventListener('click', () => {
+    window.location.reload();
+});
+
 
 function buildDeck() {
     let values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
@@ -37,6 +43,8 @@ function startGame() {
     hidden = deck.pop();
     dealerSum += getValue(hidden);
     dealerAceCount += checkAce(hidden);
+    console.log(hidden);
+    console.log(dealerSum);
 
     while (dealerSum < 17) {
         let cardImg = document.createElement('img');
@@ -47,12 +55,24 @@ function startGame() {
         document.getElementById('dealerCards').append(cardImg);
     }
     console.log(dealerSum);
+    
+    for (let i = 0; i < 2; i++) {
+        let cardImg = document.createElement('img');
+        let card = deck.pop();
+        cardImg.src = './cards/' + card + '.jpg';
+        yourSum += getValue(card);
+        yourAceCount += checkAce(card);
+        document.getElementById('yourCards').append(cardImg);
+    }
+    document.getElementById('hit').addEventListener('click', hit);
+    document.getElementById('stay').addEventListener('click', stay);
+    console.log(yourSum);
 }
 
 function getValue(card) {
     let data = card.split('-');
     let value = data[0];
-
+    
     if (isNaN(value)) {
         if (value === 'A') {
             return 11;
@@ -67,4 +87,54 @@ function checkAce(card) {
     } return 0;
 }
 
+function hit() {
+    if (!canHit) {
+        return;
+    }
+    let cardImg = document.createElement('img');
+    let card = deck.pop();
+    cardImg.src = './cards/' + card + '.jpg';
+    yourSum += getValue(card);
+    yourAceCount += checkAce(card);
+    document.getElementById('yourCards').append(cardImg);
+    
+    if (reduceAce(yourSum, yourAceCount) > 21) {
+        canHit = false;
+    }
+}
+
+function reduceAce(playerSum, playerAceCount) {
+    while (playerSum > 21 && playerAceCount > 0) {
+        playerSum -= 10;
+        playerAceCount -= 1;
+    } 
+    return playerSum;
+}
+
+function stay() {
+    dealerSum = reduceAce(dealerSum, dealerAceCount);
+    yourSum = reduceAce(yourSum, yourAceCount);
+
+    canHit = false;
+    document.getElementById('hidden').src = './cards' + hidden + '.jpg';
+
+    let message = '';
+    if (yourSum > 21) {
+        message = 'you lose!';
+    } else if (dealerSum > 21) {
+        message = 'you win!';
+    } else if (yourSum === dealerSum) {
+        message = 'tie!';
+    } else if (yourSum > dealerSum) {
+        message = 'you win!';
+    } else if (yourSum < dealerSum) {
+        message = 'you lose!';
+    }
+
+    document.getElementById('yourSum').innerText = yourSum;
+    document.getElementById('dealerSum').innerText = dealerSum;
+    document.getElementById('results').innerText = message;
+
+}
+    
 
