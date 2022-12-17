@@ -43,8 +43,7 @@ function startGame() {
     hidden = deck.pop();
     dealerSum += getValue(hidden);
     dealerAceCount += checkAce(hidden);
-    console.log(hidden);
-    console.log(dealerSum);
+
 
     while (dealerSum < 17) {
         let cardImg = document.createElement('img');
@@ -54,7 +53,7 @@ function startGame() {
         dealerAceCount += checkAce(card);
         document.getElementById('dealerCards').append(cardImg);
     }
-    console.log(dealerSum);
+  
     
     for (let i = 0; i < 2; i++) {
         let cardImg = document.createElement('img');
@@ -66,7 +65,7 @@ function startGame() {
     }
     document.getElementById('hit').addEventListener('click', hit);
     document.getElementById('stay').addEventListener('click', stay);
-    console.log(yourSum);
+
 }
 
 function getValue(card) {
