@@ -1,29 +1,41 @@
-.flex {
-    display: flex;
-    justify-content: center;
+body {
+    background-image: url(../assets/background2.jpeg);
+    text-align: center;
+    background-repeat: repeat;
+    background-size: cover;
 }
 
 button {
     width: 25%;
+    color: rgba(219, 237, 11, 0.63);
     font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.297);
 }
 
-body {
-    background-image: url(../assets/background.jpg);
+#dealerCards img {
+    height: 220px;
+    margin: 2px;
+}
+
+#yourCards img {
+    height: 220px;
+    margin: 2px;
 }
 
 h1 {
-    color: white;
+  
+    color: rgba(219, 237, 11, 0.63);
     font-size: 55px;
 }
 
 h2 {
-    color: white;
+    color: rgba(219, 237, 11, 0.63);
     font-size: 30px;
 }
 
 #results {
-    color: white;
+    color: rgba(219, 237, 11, 0.63);
     font-size: 30px;
+    
 }
 
